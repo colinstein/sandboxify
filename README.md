@@ -50,3 +50,14 @@ of home directories to see it get blocked and fail.
 ```
 sandbox-exec -f noaccess.sb bin/read_file /etc/hosts
 ```
+
+# Notes
+You can also find some for 'services' like QuickLook and MDNSResponder in
+`/usr/share/sandbox/` along with some more—including 'base' profiles to be
+imported into others) in `/System/Library/Sandbox/Profiles/`.
+
+These ones contain considerably more restictions that are worth investigating
+further including limiting access to the microphone, camera, address book,
+location, etc. There are also some useful shorthand entitlements for
+user-selected read/write file access. There's some clever stuff with /home path
+matching that might be worth digging in to.
