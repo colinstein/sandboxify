@@ -1,0 +1,6 @@
+;; Apple sandbox magic configuration file
+;; use with `sandbox-exec -f noaccess.sb /path/to/bin`
+(version 1)
+
+;; Just refuse everything
+(deny default)

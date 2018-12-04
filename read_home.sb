@@ -1,0 +1,22 @@
+;; Apple sandbox magic configuration file
+;; use with `sandbox-exec -f read_home.sb /path/to/read_file`
+;; you'll need to change the path down on line 21 to match
+(version 1)
+
+;; Just refuse everything
+(deny default)
+
+;; Allow reading from the home directory
+(allow file-write* file-read-data file-read-metadata
+  ;; Rust programs need to load a bunch of libraries to run
+  (regex "^/usr/lib/.*")
+  ;; Also allow reading everything in the home directory
+  (regex "/Users/.*/.*")
+)
+
+(allow mach* sysctl-read)
+
+(allow process-exec 
+  ;; This is the path to the binary -- read_file is my example
+  (regex "/Users/.*/read_file")
+)
